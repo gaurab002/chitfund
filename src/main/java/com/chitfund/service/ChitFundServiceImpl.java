@@ -53,4 +53,9 @@ public class ChitFundServiceImpl implements IChitFundService{
 		return chitFundDao.getAllCustomers();
 	}
 
+	@Override
+	public double calulateChit(int i) {
+		return 0;
+	}
+
 }

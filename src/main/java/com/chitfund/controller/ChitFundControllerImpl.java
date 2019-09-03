@@ -2,6 +2,8 @@ package com.chitfund.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +49,12 @@ public class ChitFundControllerImpl implements IChitFundController{
 	@Override
 	public List<Customer> getAllCustomers() {
 		return chitService.getAllCustomers();
+	}
+
+	@Override
+	public double calculateChit(@PathParam("id") int i) {
+		// TODO Auto-generated method stub
+		return chitService.calulateChit(i);
 	}
 
 }

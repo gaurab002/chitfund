@@ -36,4 +36,7 @@ public interface IChitFundController {
 	
 	@GetMapping("/getAllCustomers")
 	List<Customer> getAllCustomers();
+	
+	@GetMapping("/calculateChit/:id")
+	double calculateChit(int i);
 }
