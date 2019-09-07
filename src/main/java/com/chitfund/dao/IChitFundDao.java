@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
+import com.chitfund.models.ExistingChitFund;
 
 
 public interface IChitFundDao {
@@ -28,5 +29,11 @@ public interface IChitFundDao {
 
 
 	public List<Customer> getAllCustomers();
+
+
+	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund);
+
+
+	public List<ExistingChitFund> getAllExistingChitFunds();
 
 }

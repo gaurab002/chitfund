@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
+import com.chitfund.models.ExistingChitFund;
 
 @Repository
 public class ChitFundDaoImpl implements IChitFundDao{
@@ -54,6 +55,19 @@ public class ChitFundDaoImpl implements IChitFundDao{
 	public List<Customer> getAllCustomers() {
 		// TODO Auto-generated method stub
 		return em.createQuery("from Customer").getResultList();
+	}
+
+	@Override
+	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund) {
+		em.merge(existingChitFund);
+		em.flush();
+		return existingChitFund;
+	}
+
+	@Override
+	public List<ExistingChitFund> getAllExistingChitFunds() {
+		// TODO Auto-generated method stub
+		return em.createQuery("from ExistingChitFund").getResultList();
 	}
 
 }

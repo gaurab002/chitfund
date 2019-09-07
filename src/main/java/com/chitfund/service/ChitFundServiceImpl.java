@@ -11,6 +11,7 @@ import com.chitfund.dao.IChitFundDao;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
+import com.chitfund.models.ExistingChitFund;
 
 @Service
 @Transactional
@@ -56,6 +57,16 @@ public class ChitFundServiceImpl implements IChitFundService{
 	@Override
 	public double calulateChit(int i) {
 		return 0;
+	}
+
+	@Override
+	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund) {
+		return chitFundDao.updateChitFund(existingChitFund);
+	}
+
+	@Override
+	public List<ExistingChitFund> getAllExistingChitFunds() {
+		return chitFundDao.getAllExistingChitFunds();
 	}
 
 }

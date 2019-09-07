@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
+import com.chitfund.models.ExistingChitFund;
 
 @RequestMapping("/chitfund")
 public interface IChitFundController {
@@ -39,4 +40,10 @@ public interface IChitFundController {
 	
 	@GetMapping("/calculateChit/:id")
 	double calculateChit(int i);
+	
+	@PostMapping("/updateChitFundOtherSource")
+	public ExistingChitFund updateChitFund(@RequestBody ExistingChitFund existingChitFund);
+	
+	@GetMapping("/getChitFundsOtherSource")
+	public List<ExistingChitFund> getAllExistingChitFunds();
 }

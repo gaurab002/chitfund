@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class ExistingChitFundCall {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int id;
 	private Date callDate;
 	private double calledAmount;

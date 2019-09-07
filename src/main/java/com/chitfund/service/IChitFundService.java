@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
+import com.chitfund.models.ExistingChitFund;
 
 
 public interface IChitFundService {
@@ -27,4 +28,13 @@ public interface IChitFundService {
 
 
 	public List<Customer> getAllCustomers();
+
+
+	double calulateChit(int i);
+
+
+	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund);
+
+
+	public List<ExistingChitFund> getAllExistingChitFunds();
 }

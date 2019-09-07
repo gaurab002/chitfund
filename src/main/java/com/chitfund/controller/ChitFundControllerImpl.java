@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
+import com.chitfund.models.ExistingChitFund;
 import com.chitfund.service.IChitFundService;
 
 @RestController
@@ -55,6 +56,16 @@ public class ChitFundControllerImpl implements IChitFundController{
 	public double calculateChit(@PathParam("id") int i) {
 		// TODO Auto-generated method stub
 		return chitService.calulateChit(i);
+	}
+
+	@Override
+	public ExistingChitFund updateChitFund(@RequestBody ExistingChitFund existingChitFund) {
+			return chitService.updateChitFund(existingChitFund);
+	}
+
+	@Override
+	public List<ExistingChitFund> getAllExistingChitFunds() {
+		return chitService.getAllExistingChitFunds();
 	}
 
 }
