@@ -75,7 +75,7 @@ public class ChitFundDaoImpl implements IChitFundDao{
 		// TODO Auto-generated method stub
 		
 		ExistingChitFund existingChitFund = em.find(ExistingChitFund.class, id);;
-		 em.remove(id);
+		 em.remove(existingChitFund);
 		 em.flush();
 		 return existingChitFund;
 	}
