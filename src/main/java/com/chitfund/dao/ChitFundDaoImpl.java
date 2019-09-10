@@ -70,4 +70,14 @@ public class ChitFundDaoImpl implements IChitFundDao{
 		return em.createQuery("from ExistingChitFund").getResultList();
 	}
 
+	@Override
+	public ExistingChitFund deleteChitFund(long id) {
+		// TODO Auto-generated method stub
+		
+		ExistingChitFund existingChitFund = em.find(ExistingChitFund.class, id);;
+		 em.remove(id);
+		 em.flush();
+		 return existingChitFund;
+	}
+
 }

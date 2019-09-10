@@ -37,4 +37,7 @@ public interface IChitFundService {
 
 
 	public List<ExistingChitFund> getAllExistingChitFunds();
+
+
+	public ExistingChitFund delteChitFund(long id);
 }

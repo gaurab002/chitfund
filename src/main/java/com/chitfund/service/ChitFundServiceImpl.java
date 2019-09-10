@@ -69,4 +69,10 @@ public class ChitFundServiceImpl implements IChitFundService{
 		return chitFundDao.getAllExistingChitFunds();
 	}
 
+	@Override
+	public ExistingChitFund delteChitFund(long id) {
+		// TODO Auto-generated method stub
+		return chitFundDao.deleteChitFund(id);
+	}
+
 }

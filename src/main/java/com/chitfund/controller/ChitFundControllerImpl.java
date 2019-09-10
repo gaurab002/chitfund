@@ -68,4 +68,10 @@ public class ChitFundControllerImpl implements IChitFundController{
 		return chitService.getAllExistingChitFunds();
 	}
 
+	@Override
+	public ExistingChitFund deleteChitFund(long id) {
+		// TODO Auto-generated method stub
+		return chitService.delteChitFund(id);
+	}
+
 }

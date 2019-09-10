@@ -36,4 +36,7 @@ public interface IChitFundDao {
 
 	public List<ExistingChitFund> getAllExistingChitFunds();
 
+
+	public ExistingChitFund deleteChitFund(long id);
+
 }

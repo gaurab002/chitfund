@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,4 +47,8 @@ public interface IChitFundController {
 	
 	@GetMapping("/getChitFundsOtherSource")
 	public List<ExistingChitFund> getAllExistingChitFunds();
+	
+	@DeleteMapping("/updateChitFundOtherSource")
+	public ExistingChitFund deleteChitFund(@RequestParam("id") long id);
+	
 }
