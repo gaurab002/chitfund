@@ -18,7 +18,7 @@ public class ExistingChitFund {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
+	private long id;
 	
 	private Date startDate;
 	
@@ -31,11 +31,11 @@ public class ExistingChitFund {
 	@OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL)
 	private List<ExistingChitFundCall> existingChitFundCalls;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
