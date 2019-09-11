@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.chitfund.models.CalculateDto;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
@@ -40,7 +41,7 @@ public interface IChitFundController {
 	List<Customer> getAllCustomers();
 	
 	@GetMapping("/calculateChit/:id")
-	double calculateChit(int i);
+	CalculateDto calculateChit(int i);
 	
 	@PostMapping("/updateChitFundOtherSource")
 	public ExistingChitFund updateChitFund(@RequestBody ExistingChitFund existingChitFund);

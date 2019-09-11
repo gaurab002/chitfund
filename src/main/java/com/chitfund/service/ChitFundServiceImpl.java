@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.chitfund.dao.IChitFundDao;
+import com.chitfund.models.CalculateDto;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
 import com.chitfund.models.ExistingChitFund;
+import com.chitfund.models.ExistingChitFundCall;
 
 @Service
 @Transactional
@@ -55,8 +57,31 @@ public class ChitFundServiceImpl implements IChitFundService{
 	}
 
 	@Override
-	public double calulateChit(int i) {
-		return 0;
+	public CalculateDto calulateChit(int i) {
+		CalculateDto calculateDto = new CalculateDto();
+		ExistingChitFund existingChitFund = chitFundDao.getExistingChitFund(i);
+		double amount = existingChitFund.getAmount();
+		double lastDiduAmt = existingChitFund.getLastWillDiductAmt();
+		int terms = existingChitFund.getNoOfMonths();
+		double totalProfit = 0;
+		
+		
+		 totalProfit = existingChitFund.getExistingChitFundCalls().stream().map(existingChitFundCall -> 
+		existingChitFundCall.getCalledAmount()).mapToDouble(Double::valueOf).sum();
+		double x =0, y=0;
+				int z = existingChitFund.getExistingChitFundCalls().size()-1;
+				double l = existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
+		while(x >= y) {
+			 x =((amount*terms)- ((( terms * l))/8) * terms - (terms-(z+1)))- ((terms-(z+1))*100) ;
+			 y = amount*terms - (totalProfit + ((terms-(z+1))*100) - lastDiduAmt);
+			 l = l+1;
+		}
+		calculateDto.setTotalProfitSoFar(totalProfit);
+		calculateDto.setProfitOnKeep(y);
+		calculateDto.setProfitOnCall(x);
+		calculateDto.setAmountToBeCalled(l);
+		
+		return calculateDto;
 	}
 
 	@Override

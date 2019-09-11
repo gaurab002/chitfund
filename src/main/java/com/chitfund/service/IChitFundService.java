@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.chitfund.models.CalculateDto;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
@@ -30,7 +31,7 @@ public interface IChitFundService {
 	public List<Customer> getAllCustomers();
 
 
-	double calulateChit(int i);
+	CalculateDto calulateChit(int i);
 
 
 	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund);

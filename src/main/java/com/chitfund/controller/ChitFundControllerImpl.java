@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.chitfund.models.CalculateDto;
 import com.chitfund.models.ChitDate;
 import com.chitfund.models.ChitInfo;
 import com.chitfund.models.Customer;
@@ -53,7 +54,7 @@ public class ChitFundControllerImpl implements IChitFundController{
 	}
 
 	@Override
-	public double calculateChit(@PathParam("id") int i) {
+	public CalculateDto calculateChit(@PathParam("id") int i) {
 		// TODO Auto-generated method stub
 		return chitService.calulateChit(i);
 	}
