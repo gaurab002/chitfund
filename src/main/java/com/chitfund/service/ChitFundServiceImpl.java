@@ -57,7 +57,7 @@ public class ChitFundServiceImpl implements IChitFundService{
 	}
 
 	@Override
-	public CalculateDto calulateChit(int i) {
+	public CalculateDto calulateChit(long i) {
 		CalculateDto calculateDto = new CalculateDto();
 		ExistingChitFund existingChitFund = chitFundDao.getExistingChitFund(i);
 		double amount = existingChitFund.getAmount();

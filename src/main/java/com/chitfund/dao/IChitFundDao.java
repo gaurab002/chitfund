@@ -40,6 +40,6 @@ public interface IChitFundDao {
 	public ExistingChitFund deleteChitFund(long id);
 
 
-	public ExistingChitFund getExistingChitFund(int i);
+	public ExistingChitFund getExistingChitFund(long i);
 
 }

@@ -81,7 +81,7 @@ public class ChitFundDaoImpl implements IChitFundDao{
 	}
 
 	@Override
-	public ExistingChitFund getExistingChitFund(int i) {
+	public ExistingChitFund getExistingChitFund(long i) {
 		// TODO Auto-generated method stub
 		return em.find(ExistingChitFund.class, i);
 	}
