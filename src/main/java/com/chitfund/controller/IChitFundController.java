@@ -40,8 +40,8 @@ public interface IChitFundController {
 	@GetMapping("/getAllCustomers")
 	List<Customer> getAllCustomers();
 	
-	@GetMapping("/calculateChit/:id")
-	CalculateDto calculateChit(int i);
+	@GetMapping("/calculateChit")
+	CalculateDto calculateChit(@RequestParam("id")int i);
 	
 	@PostMapping("/updateChitFundOtherSource")
 	public ExistingChitFund updateChitFund(@RequestBody ExistingChitFund existingChitFund);

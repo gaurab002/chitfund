@@ -6,6 +6,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chitfund.models.CalculateDto;
@@ -54,7 +55,7 @@ public class ChitFundControllerImpl implements IChitFundController{
 	}
 
 	@Override
-	public CalculateDto calculateChit(@PathParam("id") int i) {
+	public CalculateDto calculateChit(@RequestParam("id") int i) {
 		// TODO Auto-generated method stub
 		return chitService.calulateChit(i);
 	}
