@@ -72,7 +72,7 @@ public class ChitFundServiceImpl implements IChitFundService{
 				int z = existingChitFund.getExistingChitFundCalls().size()-1;
 				double l = existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
 		while(x >= y) {
-			 x =((( terms * l))/8) * terms + ((terms-(z+1))*100) ;
+			 x =(( terms * amount-(l*terms)) /8) + ((terms-(z+1))*100) ;
 			 y = (terms-(z+1))*100* terms;
 			 l = l+1;
 		}
