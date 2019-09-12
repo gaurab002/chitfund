@@ -70,7 +70,7 @@ public class ChitFundServiceImpl implements IChitFundService{
 		existingChitFundCall.getCalledAmount()).mapToDouble(Double::valueOf).sum();
 		double x =0, y=0;
 				int z = existingChitFund.getExistingChitFundCalls().size()-1;
-				double l = existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
+				double l = 1;
 		while(x >= y) {
 			 x =(( terms * amount-(l*terms)) /8) + ((terms-(z+1))*100) ;
 			 y = (terms-(z+1))*100* terms;
