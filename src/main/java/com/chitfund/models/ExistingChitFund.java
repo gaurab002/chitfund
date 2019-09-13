@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
@@ -30,6 +31,8 @@ public class ExistingChitFund {
 	
 	@OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL)
 	private List<ExistingChitFundCall> existingChitFundCalls;
+	
+	private String color;
 
 	public long getId() {
 		return id;
@@ -77,6 +80,14 @@ public class ExistingChitFund {
 
 	public void setExistingChitFundCalls(List<ExistingChitFundCall> existingChitFundCalls) {
 		this.existingChitFundCalls = existingChitFundCalls;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 	
 	
