@@ -73,7 +73,7 @@ public class ChitFundServiceImpl implements IChitFundService{
 				double l = 1;
 		while(y >= x) {
 			 x =((terms- z) * 125);
-			 y = ((terms- z) * 125) + (((terms * amount) - (l* terms))/100)* terms- ((l* terms));
+			 y = ((terms- z) * 125) + (((terms * amount) - (l* terms))/125)* terms- ((l* terms));
 			 l = l+1;
 		}
 		calculateDto.setTotalProfitSoFar(totalProfit);
