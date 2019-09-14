@@ -79,7 +79,7 @@ public class ChitFundServiceImpl implements IChitFundService{
 		calculateDto.setTotalProfitSoFar(totalProfit);
 		calculateDto.setProfitOnKeep(x);
 		calculateDto.setProfitOnCall(y);
-		calculateDto.setAmountToBeCalled(l);
+		calculateDto.setAmountToBeCalled(l * terms);
 		
 		return calculateDto;
 	}
