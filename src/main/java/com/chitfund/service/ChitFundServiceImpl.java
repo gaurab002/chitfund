@@ -71,11 +71,11 @@ public class ChitFundServiceImpl implements IChitFundService{
 		double x =0, y=0;
 				int z = existingChitFund.getExistingChitFundCalls().size()-1;
 				double l =  existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
-		
+		while(x > y) {
 			 x =l*terms;
 			 y = (((terms * amount) - (l*terms))/1000)* 12.50 *(terms-z) + l - 500;
-			
-		
+			 l = l-50;
+		}
 		calculateDto.setTotalProfitSoFar(totalProfit);
 		calculateDto.setProfitOnKeep(x);
 		calculateDto.setProfitOnCall(y);
