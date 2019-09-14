@@ -73,8 +73,9 @@ public class ChitFundServiceImpl implements IChitFundService{
 				double l =  existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
 		while(y >= x) {
 			 x =l*terms;
-			 y = (((terms * amount) - (l*terms))/1000)* 12.50 + l - 500 - x;
-			 l = l-1;
+			 y = (((terms * amount) - (l*terms))/1000)* 12.50;
+			 //l = l-1;
+			 break;
 		}
 		calculateDto.setTotalProfitSoFar(totalProfit);
 		calculateDto.setProfitOnKeep(x);
