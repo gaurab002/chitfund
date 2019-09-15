@@ -57,7 +57,7 @@ public class ChitFundServiceImpl implements IChitFundService{
 	}
 
 	@Override
-	public CalculateDto calulateChit(long i) {
+	public CalculateDto calulateChit(long i, double rate) {
 		CalculateDto calculateDto = new CalculateDto();
 		ExistingChitFund existingChitFund = chitFundDao.getExistingChitFund(i);
 		double amount = existingChitFund.getAmount();
@@ -73,7 +73,7 @@ public class ChitFundServiceImpl implements IChitFundService{
 				double l =  existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
 		while(x >= y) {
 			 x =l*terms;
-			 y = (((terms * amount) - (l*terms))/1000)* 12.50 *(terms-z) + l - 500;
+			 y = (((terms * amount) - (l*terms))/1000)* rate *(terms-z) + l - 500;
 			 l = l-50;
 		}
 		calculateDto.setTotalProfitSoFar(totalProfit);

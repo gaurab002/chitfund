@@ -41,7 +41,7 @@ public interface IChitFundController {
 	List<Customer> getAllCustomers();
 	
 	@GetMapping("/calculateChit")
-	CalculateDto calculateChit(@RequestParam("id")long i);
+	CalculateDto calculateChit(@RequestParam("id")long i, @RequestParam("rate") double rate);
 	
 	@PostMapping("/updateChitFundOtherSource")
 	public ExistingChitFund updateChitFund(@RequestBody ExistingChitFund existingChitFund);

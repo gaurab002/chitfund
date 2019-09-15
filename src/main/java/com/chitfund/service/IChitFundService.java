@@ -31,7 +31,7 @@ public interface IChitFundService {
 	public List<Customer> getAllCustomers();
 
 
-	CalculateDto calulateChit(long i);
+	CalculateDto calulateChit(long i, double rate);
 
 
 	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund);
