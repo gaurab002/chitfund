@@ -55,7 +55,7 @@ public class ChitFundControllerImpl implements IChitFundController{
 	}
 
 	@Override
-	public CalculateDto calculateChit(@RequestParam("id") long i, @RequestParam("rate") double rate) {
+	public CalculateDto calculateChit(@RequestParam("id") long i, @RequestParam(defaultValue = "12.5", name="rate") double rate) {
 		// TODO Auto-generated method stub
 		return chitService.calulateChit(i, rate);
 	}
