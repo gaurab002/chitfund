@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,8 @@ public class ExistingChitFund {
 	@OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL)
 	private List<ExistingChitFundCall> existingChitFundCalls;
 	
+	
+	@Column(updatable = false, name = "color")
 	private String color;
 
 	public long getId() {
