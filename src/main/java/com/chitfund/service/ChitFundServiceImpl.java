@@ -65,7 +65,7 @@ public class ChitFundServiceImpl implements IChitFundService {
 		int terms = existingChitFund.getNoOfMonths();
 		double totalProfit = 0;
 
-		if (existingChitFund.getExistingChitFundCalls() != null) {
+		if (existingChitFund.getExistingChitFundCalls() != null && existingChitFund.getExistingChitFundCalls().size() > 0) {
 			totalProfit = existingChitFund.getExistingChitFundCalls().stream()
 					.map(existingChitFundCall -> existingChitFundCall.getCalledAmount()).mapToDouble(Double::valueOf)
 					.sum();
