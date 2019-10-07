@@ -17,11 +17,11 @@ import com.chitfund.models.ExistingChitFundCall;
 
 @Service
 @Transactional
-public class ChitFundServiceImpl implements IChitFundService{
+public class ChitFundServiceImpl implements IChitFundService {
 
 	@Autowired
 	IChitFundDao chitFundDao;
-	
+
 	@Override
 	public String createNewChit(ChitInfo chitInfo) {
 		return chitFundDao.createNewChit(chitInfo);
@@ -64,23 +64,26 @@ public class ChitFundServiceImpl implements IChitFundService{
 		double lastDiduAmt = existingChitFund.getLastWillDiductAmt();
 		int terms = existingChitFund.getNoOfMonths();
 		double totalProfit = 0;
-		
-		
-		 totalProfit = existingChitFund.getExistingChitFundCalls().stream().map(existingChitFundCall -> 
-		existingChitFundCall.getCalledAmount()).mapToDouble(Double::valueOf).sum();
-		double x =0, y=0;
-				int z = existingChitFund.getExistingChitFundCalls().size()-1;
-				double l =  existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
-		while(x >= y) {
-			 x =l*terms;
-			 y = (((terms * amount) - (l*terms))/1000)* rate *(terms-z) + l - 500;
-			 l = l-50;
+
+		if (existingChitFund.getExistingChitFundCalls() != null) {
+			totalProfit = existingChitFund.getExistingChitFundCalls().stream()
+					.map(existingChitFundCall -> existingChitFundCall.getCalledAmount()).mapToDouble(Double::valueOf)
+					.sum();
+			double x = 0, y = 0;
+			int z = existingChitFund.getExistingChitFundCalls().size() - 1;
+			double l = existingChitFund.getExistingChitFundCalls().get(z).getCalledAmount();
+			while (x >= y) {
+				x = l * terms;
+				y = (((terms * amount) - (l * terms)) / 1000) * rate * (terms - z) + l - 500;
+				l = l - 50;
+			}
+
+			calculateDto.setTotalProfitSoFar(totalProfit);
+			calculateDto.setProfitOnKeep(x);
+			calculateDto.setProfitOnCall(y);
+			calculateDto.setAmountToBeCalled(l * terms);
 		}
-		calculateDto.setTotalProfitSoFar(totalProfit);
-		calculateDto.setProfitOnKeep(x);
-		calculateDto.setProfitOnCall(y);
-		calculateDto.setAmountToBeCalled(l * terms);
-		
+
 		return calculateDto;
 	}
 
