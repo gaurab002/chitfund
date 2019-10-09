@@ -2,6 +2,7 @@ package com.chitfund.pushnotification;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -16,6 +17,9 @@ import org.springframework.stereotype.Service;
 
 import com.chitfund.dao.PushNotificationDao;
 import com.chitfund.models.DeviceToken;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingException;
+import com.google.firebase.messaging.Message;
 
 
 
@@ -23,7 +27,6 @@ import com.chitfund.models.DeviceToken;
 @Transactional
 public class PushNotificationService {
 
-    @Value("#{${app.notifications.defaults}}")
     private Map<String, String> defaults;
     
     
@@ -39,11 +42,7 @@ public class PushNotificationService {
 
     @Scheduled(initialDelay = 60000, fixedDelay = 60000)
     public void sendSamplePushNotification() {
-        try {
-            fcmService.sendMessageWithoutData(getSamplePushNotificationRequest());
-        } catch (InterruptedException | ExecutionException e) {
-            logger.error(e.getMessage());
-        }
+     
     }
 
 
@@ -66,18 +65,40 @@ public class PushNotificationService {
     }
 
 
-    private PushNotificationRequest getSamplePushNotificationRequest() {
-        PushNotificationRequest request = new PushNotificationRequest(defaults.get("title"),
-                defaults.get("message"),
-                defaults.get("topic"));
-        return request;
-    }
-
 	public boolean registerDeviceToken(DeviceToken token) {
 		// TODO Auto-generated method stub
 		if(token != null && token.getToken() != null && token.getToken().length() != 0)
 		return pushNotificationDao.addDeviceToken(token);
 		else return false;
+	}
+
+	public void sendPushNotification() throws FirebaseMessagingException {
+		// This registration token comes from the client FCM SDKs.
+		List<DeviceToken> registrationTokens = pushNotificationDao.getAllTokens();
+
+		// See documentation on defining a message payload.
+		registrationTokens.forEach(token -> {
+			Message message = Message.builder()
+				    .putData("score", "850")
+				    .putData("time", "2:45")
+				    .setToken(token.getToken())
+				    .build();
+
+				// Send a message to the device corresponding to the provided
+				// registration token.
+				String response;
+				try {
+					response = FirebaseMessaging.getInstance().send(message);
+					System.out.println("Successfully sent message: " + response);
+				} catch (FirebaseMessagingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// Response is a message ID string.
+			
+		});
+	
+		
 	}
 
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
 	@GetMapping("/test")
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(cron = "*/10 * * * * *")
 	public String getTest() {
 		return "hello";
 	}
