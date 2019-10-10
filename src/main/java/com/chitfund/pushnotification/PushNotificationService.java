@@ -17,9 +17,11 @@ import org.springframework.stereotype.Service;
 
 import com.chitfund.dao.PushNotificationDao;
 import com.chitfund.models.DeviceToken;
+import com.google.api.core.ApiFuture;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
+import com.google.firebase.messaging.Notification;
 
 
 
@@ -42,7 +44,11 @@ public class PushNotificationService {
 
     @Scheduled(initialDelay = 60000, fixedDelay = 60000)
     public void sendSamplePushNotification() {
-     
+        try {
+            fcmService.sendMessageWithoutData(getSamplePushNotificationRequest());
+        } catch (InterruptedException | ExecutionException e) {
+            logger.error(e.getMessage());
+        }
     }
 
 
@@ -65,6 +71,10 @@ public class PushNotificationService {
     }
 
 
+    private PushNotificationRequest getSamplePushNotificationRequest() {
+  return null;
+    }
+
 	public boolean registerDeviceToken(DeviceToken token) {
 		// TODO Auto-generated method stub
 		if(token != null && token.getToken() != null && token.getToken().length() != 0)
@@ -77,24 +87,18 @@ public class PushNotificationService {
 		List<DeviceToken> registrationTokens = pushNotificationDao.getAllTokens();
 
 		// See documentation on defining a message payload.
+		Notification notification = new Notification("Chit call is today", "Today you have chit at 5:00 PM");
 		registrationTokens.forEach(token -> {
 			Message message = Message.builder()
-				    .putData("score", "850")
-				    .putData("time", "2:45")
+				    .setNotification(notification)
 				    .setToken(token.getToken())
 				    .build();
 
 				// Send a message to the device corresponding to the provided
 				// registration token.
-				String response;
-				try {
-					response = FirebaseMessaging.getInstance().send(message);
-					System.out.println("Successfully sent message: " + response);
-				} catch (FirebaseMessagingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				// Response is a message ID string.
+				ApiFuture<String> response;
+				response = FirebaseMessaging.getInstance().sendAsync(message);
+				System.out.println("Successfully sent message: " + response);
 			
 		});
 	
