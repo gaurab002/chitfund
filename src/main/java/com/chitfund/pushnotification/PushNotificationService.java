@@ -18,10 +18,14 @@ import org.springframework.stereotype.Service;
 import com.chitfund.dao.PushNotificationDao;
 import com.chitfund.models.DeviceToken;
 import com.google.api.core.ApiFuture;
+import com.google.firebase.messaging.AndroidConfig;
+import com.google.firebase.messaging.AndroidConfig.Priority;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
+import com.google.firebase.messaging.WebpushConfig;
+import com.google.firebase.messaging.WebpushConfig.Builder;
 
 
 
@@ -89,11 +93,15 @@ public class PushNotificationService {
 		// See documentation on defining a message payload.
 		Notification notification = new Notification("Chit call is today", "Today you have chit at 5:00 PM");
 		registrationTokens.forEach(token -> {
+			WebpushConfig webpushConfig =WebpushConfig.builder().putHeader( "Urgency", "high").build();
+			AndroidConfig androidConfig = AndroidConfig.builder().setPriority(Priority.HIGH).build();
 			Message message = Message.builder()
 				    .setNotification(notification)
 				    .setToken(token.getToken())
+				    .setWebpushConfig(webpushConfig)
+				    .setAndroidConfig(androidConfig)
 				    .build();
-
+			
 				// Send a message to the device corresponding to the provided
 				// registration token.
 				ApiFuture<String> response;
