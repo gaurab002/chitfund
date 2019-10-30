@@ -14,8 +14,8 @@ import com.chitfund.models.Customer;
 import com.chitfund.models.ExistingChitFund;
 
 @Repository
-public class ChitFundDaoImpl implements IChitFundDao{
-	
+public class ChitFundDaoImpl implements IChitFundDao {
+
 	@Autowired
 	EntityManager em;
 
@@ -67,17 +67,18 @@ public class ChitFundDaoImpl implements IChitFundDao{
 	@Override
 	public List<ExistingChitFund> getAllExistingChitFunds(String uid) {
 		// TODO Auto-generated method stub
-		return em.createQuery("from ExistingChitFund where uid="+uid).getResultList();
+		return em.createQuery("from ExistingChitFund WHERE uid = :uid").setParameter("uid", uid).getResultList();
 	}
 
 	@Override
 	public ExistingChitFund deleteChitFund(long id) {
 		// TODO Auto-generated method stub
-		
-		ExistingChitFund existingChitFund = em.find(ExistingChitFund.class, id);;
-		 em.remove(existingChitFund);
-		 em.flush();
-		 return existingChitFund;
+
+		ExistingChitFund existingChitFund = em.find(ExistingChitFund.class, id);
+		;
+		em.remove(existingChitFund);
+		em.flush();
+		return existingChitFund;
 	}
 
 	@Override
