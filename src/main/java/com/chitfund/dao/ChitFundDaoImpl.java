@@ -65,9 +65,9 @@ public class ChitFundDaoImpl implements IChitFundDao{
 	}
 
 	@Override
-	public List<ExistingChitFund> getAllExistingChitFunds() {
+	public List<ExistingChitFund> getAllExistingChitFunds(String uid) {
 		// TODO Auto-generated method stub
-		return em.createQuery("from ExistingChitFund").getResultList();
+		return em.createQuery("from ExistingChitFund where uid="+uid).getResultList();
 	}
 
 	@Override

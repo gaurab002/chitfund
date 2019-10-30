@@ -34,7 +34,7 @@ public interface IChitFundDao {
 	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund);
 
 
-	public List<ExistingChitFund> getAllExistingChitFunds();
+	public List<ExistingChitFund> getAllExistingChitFunds(String uid);
 
 
 	public ExistingChitFund deleteChitFund(long id);
