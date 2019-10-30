@@ -15,7 +15,7 @@ public class PushNotificationSchedular {
 	private PushNotificationService pushNotificationService;
 	private static final Logger logger = LoggerFactory.getLogger(PushNotificationSchedular.class);
 
-	@Scheduled(cron = "*/10 * * * * *")
+	@Scheduled(cron = "0 0 10 * * *")
 	public void cronJobs() throws FirebaseMessagingException {
 		pushNotificationService.sendPushNotification();
 	}

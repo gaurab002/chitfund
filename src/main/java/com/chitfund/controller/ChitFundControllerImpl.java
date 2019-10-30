@@ -34,8 +34,8 @@ public class ChitFundControllerImpl implements IChitFundController{
 	}
 
 	@Override
-	public List<ChitInfo> getAllChit() {
-		return chitService.getAllChit();
+	public List<ChitInfo> getAllChit(@RequestParam("uid") String uid) {
+		return chitService.getAllChit(uid);
 	}
 
 	@Override
@@ -66,8 +66,8 @@ public class ChitFundControllerImpl implements IChitFundController{
 	}
 
 	@Override
-	public List<ExistingChitFund> getAllExistingChitFunds() {
-		return chitService.getAllExistingChitFunds();
+	public List<ExistingChitFund> getAllExistingChitFunds(@RequestParam("uid") String uid) {
+		return chitService.getAllExistingChitFunds(uid);
 	}
 
 	@Override

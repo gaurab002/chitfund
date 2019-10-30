@@ -9,12 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ChitInfo {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
 	private Double amount;
@@ -25,6 +26,8 @@ public class ChitInfo {
 	
 	private Date endDate;
 	
+	private String uid;
+
 	@OneToMany
 	private List<Customer> customers;
 
@@ -74,6 +77,14 @@ public class ChitInfo {
 
 	public void setChitTime(Time chitTime) {
 		this.chitTime = chitTime;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	
 	

@@ -24,6 +24,10 @@ public class PushNotificationDao {
 
 	public List<DeviceToken> getAllTokens() {
 		// TODO Auto-generated method stub
-		return em.createQuery("from DeviceToken").getResultList();
+		List<DeviceToken> deviceTokens = em.createQuery("from DeviceToken").getResultList();
+		DeviceToken deviceToken = new DeviceToken();
+		deviceToken.setToken("cHX2QhOFJhM:APA91bFB7i2PaF3MM8SIRsgzV176453AqlAu-YGBbRsul7mvJwkx_KEt3gn-Xi7ILSRpZ3Vv8GQu1NR3ixDC1eohPh0zVIDpWc1lp5Br2m287RjPe8g7oTAI5EZYoti6dcP37gfyEJaK");
+		deviceTokens.add(deviceToken);
+		return deviceTokens;
 	}
 }

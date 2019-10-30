@@ -1,6 +1,7 @@
 package com.chitfund.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -33,9 +34,9 @@ public class ChitFundServiceImpl implements IChitFundService {
 	}
 
 	@Override
-	public List<ChitInfo> getAllChit() {
+	public List<ChitInfo> getAllChit(String uid) {
 		// TODO Auto-generated method stub
-		return chitFundDao.getAllChit();
+		return chitFundDao.getAllChit().stream().filter(chit -> chit.getUid().equalsIgnoreCase(uid)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -93,8 +94,10 @@ public class ChitFundServiceImpl implements IChitFundService {
 	}
 
 	@Override
-	public List<ExistingChitFund> getAllExistingChitFunds() {
-		return chitFundDao.getAllExistingChitFunds();
+	public List<ExistingChitFund> getAllExistingChitFunds(String uid) {		
+		// TODO Auto-generated method stub
+		return chitFundDao.getAllExistingChitFunds().stream().filter(chit -> chit.getUid().equalsIgnoreCase(uid)).collect(Collectors.toList());
+
 	}
 
 	@Override

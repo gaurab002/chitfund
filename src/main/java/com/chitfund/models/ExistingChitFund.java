@@ -30,6 +30,8 @@ public class ExistingChitFund {
 	
 	private double lastWillDiductAmt;
 	
+	private String uid;
+	
 	@OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL)
 	private List<ExistingChitFundCall> existingChitFundCalls;
 	
@@ -91,6 +93,14 @@ public class ExistingChitFund {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	
 	

@@ -29,7 +29,7 @@ public interface IChitFundController {
 	public String addCustomer(@RequestBody Customer customer);
 	
 	@GetMapping("/getAllChit")
-	public List<ChitInfo> getAllChit();
+	public List<ChitInfo> getAllChit(@RequestParam("uid") String uid);
 	
 	@PostMapping("/updateChitTerm")
 	public String updateChitTerm(@RequestBody ChitDate chitDate);
@@ -47,9 +47,10 @@ public interface IChitFundController {
 	public ExistingChitFund updateChitFund(@RequestBody ExistingChitFund existingChitFund);
 	
 	@GetMapping("/getChitFundsOtherSource")
-	public List<ExistingChitFund> getAllExistingChitFunds();
+	public List<ExistingChitFund> getAllExistingChitFunds(@RequestParam("uid") String uid);
 	
 	@DeleteMapping("/updateChitFundOtherSource")
 	public ExistingChitFund deleteChitFund(@RequestParam("id") long id);
+
 	
 }

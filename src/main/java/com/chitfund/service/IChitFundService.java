@@ -19,7 +19,7 @@ public interface IChitFundService {
 	public String addCustomer(Customer customer);
 	
 
-	public List<ChitInfo> getAllChit();
+	public List<ChitInfo> getAllChit(String uid);
 	
 
 	public ChitInfo getChitById(Long id);
@@ -37,7 +37,7 @@ public interface IChitFundService {
 	public ExistingChitFund updateChitFund(ExistingChitFund existingChitFund);
 
 
-	public List<ExistingChitFund> getAllExistingChitFunds();
+	public List<ExistingChitFund> getAllExistingChitFunds(String uid);
 
 
 	public ExistingChitFund delteChitFund(long id);
