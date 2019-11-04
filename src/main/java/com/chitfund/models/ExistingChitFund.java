@@ -36,7 +36,7 @@ public class ExistingChitFund {
 	private List<ExistingChitFundCall> existingChitFundCalls;
 	
 	
-	@Column(updatable = false, name = "color")
+	@Column(name = "color")
 	private String color;
 
 	public long getId() {
